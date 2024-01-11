@@ -16,4 +16,22 @@ export class UserLoginFormComponent {
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar
     ){}
+
+    ngOnInit():void {
+
+    }
+
+    loginUser(): void {
+      this.fetchApiData.userLogin(this.userData).subscribe({next: (response) => {
+        this.dialogRef.close();
+        localStorage.setItem('token', response.token);
+        console.log(response.token)
+      }, error: (response) => {
+        console.log(response);
+    
+        this.snackBar.open(response, 'OK', {
+          duration: 2000
+        });
+      }})
+    }
 }
