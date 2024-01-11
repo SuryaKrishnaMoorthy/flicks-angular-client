@@ -8,12 +8,8 @@ const apiUrl = 'https://flicks-api-24f25506e519.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchApiDataService {
-
-  constructor() { }
-}
-
-export class UserRegistrationService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
@@ -22,7 +18,6 @@ export class UserRegistrationService {
 
  // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
     catchError(this.handleError)
     );
@@ -41,7 +36,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -52,7 +47,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -64,7 +59,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -75,7 +70,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -86,7 +81,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -99,7 +94,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
 
       catchError(this.handleError)
     );
@@ -112,7 +107,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -123,7 +118,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -134,7 +129,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -145,7 +140,7 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      // map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
