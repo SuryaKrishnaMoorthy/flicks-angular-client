@@ -25,7 +25,8 @@ export class UserLoginFormComponent {
       this.fetchApiData.userLogin(this.userData).subscribe({next: (response) => {
         this.dialogRef.close();
         localStorage.setItem('token', response.token);
-        console.log(response.token)
+        localStorage.setItem('user', response.user.Username);
+        console.log(response)
       }, error: (response) => {
         console.log(response);
     
