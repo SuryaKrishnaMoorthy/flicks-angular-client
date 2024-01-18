@@ -35,6 +35,9 @@
             "scripts": []
           },
           "configurations": {
+            "github-pages": {
+              "baseHref": "/flicks-angular-client/"
+            },
             "production": {
               "budgets": [
                 {
