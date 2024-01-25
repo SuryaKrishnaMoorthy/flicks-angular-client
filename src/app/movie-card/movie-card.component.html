@@ -12,8 +12,12 @@
       style="max-width: 100%"
     />
     <mat-card-actions>
-      <button mat-button color="primary">Genre</button>
-      <button mat-button color="primary">Director</button>
+      <button mat-button color="primary" (click)="openGenre(movie.Genre)">
+        Genre
+      </button>
+      <button mat-button color="primary" (click)="openDirector(movie.Director)">
+        Director
+      </button>
       <button mat-button color="primary">Synopsis</button>
 
       <mat-icon>favorite_border</mat-icon>

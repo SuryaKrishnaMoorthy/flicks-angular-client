@@ -1,0 +1,29 @@
+<h2 mat-dialog-title class="font-bold">{{ data.Name }}</h2>
+<mat-dialog-content>
+  <p>{{ data.Bio }}</p>
+  <p>
+    <span class="font-bold">Movies Directed: </span
+    ><span *ngFor="let movie of data.moviesDirected">{{ movie }}, </span>
+  </p>
+  <p>
+    <span class="font-bold">Born on </span
+    >{{ data.Birthday | date : "longDate" }}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="true">Close</button>
+</mat-dialog-actions>
+
+<!-- 
+Birthday
+: 
+"1962-08-11T00:00:00.000Z"
+MoviesDirected
+: 
+[]
+Name
+: 
+"Rob Minkoff"
+moviesDirected
+: 
+(6) -->

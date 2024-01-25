@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,7 +7,16 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  // @Input userData = {Username: '', Password:"", email: "", dob: ""}
+ 
+  constructor(
+    public fetchApiData: FetchApiDataService
+  ){}
 
+  ngOnInit():void{}
 
+  getUserData():void{
+    // this.fetchApiData.getUser(userId);
+    
+  }
 }
+
