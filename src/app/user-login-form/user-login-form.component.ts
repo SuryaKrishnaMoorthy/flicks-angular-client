@@ -28,6 +28,8 @@ export class UserLoginFormComponent {
         this.dialogRef.close();
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', response.user.Username);
+        localStorage.setItem('userId', response.user._id);
+        localStorage.setItem('favoriteMovies', JSON.stringify(response.user.FavoriteMovies));
         this.router.navigate(['movies']);
       }, error: (response) => {
         console.log(response);

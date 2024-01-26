@@ -2,15 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-genre',
-  templateUrl: './genre.component.html',
-  styleUrls: ['./genre.component.scss']
+  selector: 'app-synopsis',
+  templateUrl: './synopsis.component.html',
+  styleUrls: ['./synopsis.component.scss']
 })
-export class GenreComponent {
-
+export class SynopsisComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any, 
-    public dialogRef: MatDialogRef<GenreComponent>
+    public dialogRef: MatDialogRef<SynopsisComponent>
   ){}
 
   ngOnInit():void {

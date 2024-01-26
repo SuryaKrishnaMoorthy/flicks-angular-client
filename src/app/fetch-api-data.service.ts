@@ -76,11 +76,11 @@ export class FetchApiDataService {
 
   public getUser(userId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${apiUrl}users/:${userId}` , {headers: new HttpHeaders(
+    return this.http.get(`${apiUrl}users/${userId}` , {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      // map(this.extractResponseData),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -101,12 +101,12 @@ export class FetchApiDataService {
    */
 
   public addFavoriteMovie(userId: string, movieId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.put(`${apiUrl}users/${userId}/:${movieId}` , {headers: new HttpHeaders(
+    const token = localStorage.getItem('token');    
+    return this.http.put(`${apiUrl}users/${userId}/${movieId}`, {}, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      // map(this.extractResponseData),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -117,7 +117,7 @@ export class FetchApiDataService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      // map(this.extractResponseData),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -128,27 +128,27 @@ export class FetchApiDataService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      // map(this.extractResponseData),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
   public deleteMovie(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(`${apiUrl}users/${userId}/${movieId}` , {headers: new HttpHeaders(
+    return this.http.delete(`${apiUrl}users/${userId}/${movieId}`, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      // map(this.extractResponseData),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
 
 // Non-typed response extraction
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
-    return body || { };
+    return body || {};
   }
 
 

@@ -1,0 +1,12 @@
+<h2 mat-dialog-title class="font-bold">{{ data.Title }}</h2>
+<mat-dialog-content>
+  <p>{{ data.Description }}</p>
+  <p>
+    <span class="font-bold">Actors: </span
+    ><span *ngFor="let actor of data.Actors">{{ actor }}, </span>
+  </p>
+  <p><span class="font-bold">Rating: </span>{{ data.Rating }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="true">Close</button>
+</mat-dialog-actions>
