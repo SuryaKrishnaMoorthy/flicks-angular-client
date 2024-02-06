@@ -1,18 +1,62 @@
 .edit,
-.favoriteMovies {
-  margin: 5% 10%;
+.favoriteMovies,
+.profileInfo {
+  margin: 10% 10%;
 }
 
 .editForm {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+}
+.favoriteMovies {
+  justify-content: flex-start;
+  padding-bottom: 5%;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.profileInfo-content {
+  display: inline-block;
+  font-weight: 600;
+  margin-right: 5%;
+  width: 100px;
+  margin-bottom: 5%;
 }
 
 mat-card {
-  margin-right: 20px;
   width: 30%;
 }
 
-.favoriteMovies {
-  margin-bottom: 20%;
+.favMovieImage {
+  max-width: 100%;
+  max-height: 80%;
+}
+
+mat-card-actions {
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.mat-icon,
+.button {
+  cursor: pointer;
+}
+
+.mat-icon:hover {
+  color: rgb(72, 70, 70);
+}
+
+@media screen and (max-width: 1200px) {
+  mat-card {
+    flex-grow: 1;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  mat-card {
+    flex-grow: 1;
+    width: 100%;
+  }
 }

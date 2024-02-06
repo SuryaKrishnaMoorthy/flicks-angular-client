@@ -9,6 +9,12 @@ const apiUrl = 'https://flicks-api-24f25506e519.herokuapp.com/';
   providedIn: 'root'
 })
 
+/**
+ * Service for making API requests related to user data.
+ *
+ * @class
+ * @name FetchApiDataService
+ */
 export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
@@ -102,10 +108,10 @@ export class FetchApiDataService {
 
   public addFavoriteMovie(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');    
-    return this.http.put(`${apiUrl}users/${userId}/${movieId}`, {}, {headers: new HttpHeaders(
+    return this.http.put(`${apiUrl}users/${userId}/${movieId}`, {id: userId}, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
-      })}).pipe(
+      }), responseType: 'text'}, ).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -138,7 +144,7 @@ export class FetchApiDataService {
     return this.http.delete(`${apiUrl}users/${userId}/${movieId}`, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
-      })}).pipe(
+      }), responseType: 'text'}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -153,14 +159,15 @@ export class FetchApiDataService {
 
 
 private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
     } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
       console.error(
-          `Error Status code ${error.status}, ` +
-          `Error body is: ${error.error}`);
-      }
-      return throwError(
-      'Something bad happened; please try again later.');
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

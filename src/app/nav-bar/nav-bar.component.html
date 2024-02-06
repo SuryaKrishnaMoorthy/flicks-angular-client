@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="nav-container">
-  <span class="logo">Flicks-Angular</span>
+  <span class="logo" (click)="navigateToHome()">Flicks-Angular</span>
   <span class="example-spacer"></span>
-  <button aria-label="Home">Home</button>
+  <button aria-label="Home" (click)="navigateToHome()">Home</button>
   <button aria-label="Profile" (click)="navigateToProfile()">Profile</button>
-  <button aria-label="Profile">Logout</button>
+  <button aria-label="Profile" (click)="handleLogout()">Logout</button>
 </mat-toolbar>

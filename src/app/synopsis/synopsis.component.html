@@ -1,6 +1,13 @@
 <h2 mat-dialog-title class="font-bold">{{ data.Title }}</h2>
 <mat-dialog-content>
   <p>{{ data.Description }}</p>
+  <p *ngIf="data.ReleaseYear">
+    <span class="font-bold">Release Year: </span
+    ><span>{{ data.ReleaseYear }}</span>
+  </p>
+  <p *ngIf="data.Genre">
+    <span class="font-bold">Genre: </span><span>{{ data.Genre.Name }}</span>
+  </p>
   <p>
     <span class="font-bold">Actors: </span
     ><span *ngFor="let actor of data.Actors">{{ actor }}, </span>

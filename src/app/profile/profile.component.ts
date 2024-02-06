@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { GenreComponent } from '../genre/genre.component';
-import { DirectorComponent } from '../director/director.component';
+
 import { SynopsisComponent } from '../synopsis/synopsis.component';
 
 @Component({
@@ -12,15 +11,15 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  @Input() public username: string = "";
-  @Input() public password: string = "";
-  @Input() public email: string = "";
-  @Input() public birthday: Date = new Date();
-  @Input() public favoriteMovies: any = [];
+  public username: string = "";
+  public password: string = "";
+  public email: string = "";
+  public birthday: Date = new Date();
+  public favoriteMovies: any = [];
   public favoriteMoviesIds: Array<string> = [];
-
-  
+  public editMode: boolean = false;
   public userId = localStorage.getItem("userId");
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -42,6 +41,7 @@ export class ProfileComponent {
       }
     }, error: () => {}});
   }
+
   getUserData():void{
 
     this.userId && this.fetchApiData.getUser(this.userId).subscribe({next: (response) => {
@@ -56,6 +56,10 @@ export class ProfileComponent {
      }});
   }
 
+  activateEdit():void{
+    this.editMode = true;
+  }
+
   editUser():void {
     const userData = {
       Username: this.username,
@@ -68,30 +72,18 @@ export class ProfileComponent {
       this.snackBar.open(`${response.Username}'s profile is edited successfully`, 'OK', {
         duration: 2000
      });
-    }, error: (response) => {
-      console.log(response);
-      
+     localStorage.setItem('user', userData.Username);
+     this.editMode = false;
+    }, error: (error) => {
+      console.log(error);
+       this.snackBar.open(`Profile edit failed! Please try later`, 'OK', {
+        duration: 3000
+     });
     }})
   }
 
-  openGenre(genre: any):void {
-    this.dialog.open(GenreComponent, {
-      width: "100%",
-      maxWidth   : '400px',
-      maxHeight  : '700px',
-      data: genre
-    });   
-    console.log(genre);
-     
-  }
-
-  openDirector(director: any):void {
-    this.dialog.open(DirectorComponent, {
-      width: "100%",
-      // maxWidth   : '400px',
-      maxHeight  : '700px',
-      data: director
-    });   
+  cancelEdit():void {
+    this.editMode = false;
   }
 
   openSynopsis(synopsis: any):void {
@@ -101,7 +93,31 @@ export class ProfileComponent {
       maxHeight  : '700px',
       data: synopsis
     });   
-    console.log(synopsis);
+  }
+
+  removeFavorite(movieId: string): void {
+    let _favMovies = localStorage.getItem("favoriteMovies");
+    let favMovies = _favMovies ? JSON.parse(_favMovies) : [];
+    
+  this.userId && this.fetchApiData.deleteMovie(this.userId, movieId).subscribe({
+    next: (response) => {
+      let movieName = this.favoriteMovies?.filter((m:any) => m._id === movieId)[0].Title;
+      
+      let arr = favMovies.filter((m:string) => m !== movieId);
+      localStorage.setItem("favoriteMovies", JSON.stringify(arr));
+      this.favoriteMovies = this.favoriteMovies.filter((m:any) => m._id !== movieId);
+      
+      this.snackBar.open(`${movieName} has been removed from favorites.`, 'OK', {
+        duration: 3000
+     });
+    }, 
+    error: (error) => {
+      console.log(error);
+      this.snackBar.open(`${error.error}`, 'OK', {
+        duration: 3000
+     });
+    }
+  })
   }
 }
 
