@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'flicks-angular-client';
 
+/**
+ * AppComponent class representing the root component of the application.
+ */
+export class AppComponent {
+  /**
+   * The title of the application.
+   */
+  title = 'flicks-angular-client';
 }

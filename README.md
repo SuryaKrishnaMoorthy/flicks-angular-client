@@ -1,27 +1,28 @@
-# FlicksAngularClient
+# Flicks-Angular-Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+## About the project
 
-## Development server
+- An application to do movie search.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Login/Signup
+- Edit User information
+- Allows the user to view all movies in the home page
+- Allows the user to add favorite movies
+- The user can view details about movie on a click
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### BUILT WITH
 
-## Build
+- AngularJS
+- Angular Material
+- JS and CSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### API used
+- https://flicks-api-24f25506e519.herokuapp.com/
 
-## Running unit tests
+## To run
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Fork and clone the repo
+- Run ```npm install``` in the repo
+- Run ```npm run start``` to start

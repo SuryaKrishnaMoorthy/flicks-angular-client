@@ -1,5 +1,5 @@
 {
   // Comments are supported, like tsconfig.json
-  "entryPoints": ["src/main.ts"],
+  "entryPoints": ["src"],
   "out": "docs"
 }
